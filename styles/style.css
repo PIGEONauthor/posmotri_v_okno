@@ -9,6 +9,7 @@ html {
 }
 
 .page {
+  display: flex;
   inline-size: 1200px;
   block-size: 100%;
   margin: auto;
@@ -52,9 +53,9 @@ ol {
   grid-template-columns: 711px 399px;
   gap: 30px;
   align-items: end;
-  margin: 133px 30px;
+  padding: 133px 30px;
   /* врЕменная рамка 
-  border: 1px solid #FFF; */
+  border: 1px solid #FFF; */ 
 }
 
 .result {
@@ -65,8 +66,7 @@ ol {
 .result__video-container {
   position: relative;
   inline-size: 711px;
-  block-size: 456px;
-  padding-block-start: 70px;
+  block-size: 386px;
   margin-block-end: 16px;
 }
 
@@ -104,6 +104,14 @@ ol {
   cursor: pointer;
 }
 
+.search-form__label:has(:focus-visible) {
+  border: 1px solid #FFF;
+}
+
+.search-form__label:hover > .search-form__label-text{
+  text-decoration: underline;
+}
+
 .search-form__textfield {
   inline-size: 225px;
   block-size: 27px;
@@ -117,9 +125,13 @@ ol {
   border: none;
   border-top: 1px solid rgba(255, 255, 255, 0.70);
   border-bottom: 1px solid rgba(255, 255, 255, 0.70);
-  padding: 5px 0;
+  margin: 1px;
   cursor: pointer;
   appearance: none;
+}
+
+.search-form__textfield:focus {
+  outline: none;
 }
 
 .search-form__textfield::placeholder {
@@ -132,10 +144,23 @@ ol {
 }
 
 .search-form__pseudo-checkbox {
-  inline-size: 19px;
-  block-size: 19px;
+  position: relative;
+  display: flex;
+  inline-size: 18px;
+  block-size: 18px;
   border: 1px solid #FFF;
+  margin: 1px;
   margin-inline-end: 5px;
+}
+
+.search-form__checkbox:checked + .search-form__pseudo-checkbox::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  inline-size: 15px;
+  block-size: 15px;
+  background-color: #FFF;
 }
 
 .button {
@@ -144,18 +169,30 @@ ol {
   background-color: #1B1919;
   color: #FFF;
   text-align: center;
-  font-family: Fira Sans Condensed;
+  font-family: 'Fira Sans Condensed', sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
   border: 1px solid #FFF;
   inline-size: 100%;
+  block-size: 34px;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:hover {
+  text-decoration: underline;
+}
+
+.button:active {
+  background: #545050;
 }
 
 .search-form__submit-button {
-  /*inline-size: 194px;
-  block-size: 34px;*/
+  /* */
 }
 
 .content__details {
@@ -180,7 +217,7 @@ ol {
 .content__list {
   position: relative;
   block-size: 298px;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .content__list-item:not(:first-child) {
