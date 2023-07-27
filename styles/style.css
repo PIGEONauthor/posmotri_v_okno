@@ -56,6 +56,7 @@ ol {
   background-color: transparent;
   color: #FFF;
   text-align: center;
+  font-family: inherit;
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
@@ -68,11 +69,11 @@ ol {
 /* ---------------------------------------------- */
 
 .content {
-  display: grid;
-  grid-template-columns: 711px 399px;
+  display: flex;
   gap: 30px;
   align-items: end;
   margin: auto;
+  inline-size: 1140px;
 }
 
 /* -----------------------RESULT----------------------- */
@@ -132,16 +133,16 @@ ol {
 .search-form__textfield {
   inline-size: 225px;
   block-size: 27px;
-  color: rgba(255, 255, 255, 0.70);
+  color: #FFF;
+  font-family: inherit;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   background-color: transparent;
   border: none;
-  border-top: 1px solid rgba(255, 255, 255, 0.70);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.70);
-  cursor: pointer;
+  border-block-start: 1px solid #FFF;
+  border-block-end: 1px solid #FFF;
   appearance: none;
 }
 
@@ -158,16 +159,6 @@ ol {
   gap: 15px;
 }
 
-.search-form__pseudo-checkbox {
-  display: flex;
-  inline-size: 19px;
-  block-size: 19px;
-  border: 1px solid #FFF;
-  background-color: transparent;
-  margin: 1px;
-  margin-inline-end: 5px;
-}
-
 .search-form__checkbox:checked + .search-form__pseudo-checkbox::before {
   content: '';
   display: block;
@@ -176,6 +167,16 @@ ol {
   block-size: 15px;
   margin: auto;
   background-color: #FFF;
+}
+
+.search-form__pseudo-checkbox {
+  display: flex;
+  inline-size: 19px;
+  block-size: 19px;
+  border: 1px solid #FFF;
+  background-color: transparent;
+  margin: 1px;
+  margin-inline-end: 5px;
 }
 
 .button:focus {
@@ -232,19 +233,6 @@ ol {
   inline-size: 100%;
 }
 
-/* не понятно, для чего в рекомендациях сказано:
-  
---"Создать вертикальные отступы между элементами
-.content__list-item (у всех, кроме последнего)"--
-
-  если смотреть на макет, то между крайним элементом
-  и кнопкой есть отступ, по этому я использовал gap
-  для всех элементов в контейнере  */
-
-/*.content__list-item:not(:first-child) {
-  margin-block-start: 30px;
-}*/
-
 .content__card-link {
   margin: 2px;
   display: block;
@@ -257,6 +245,11 @@ ol {
 
 .content__card-link:focus-visible {
   outline: 1px solid #FFF;
+}
+
+.content__card-link:hover {
+  color: #FFF;
+  text-decoration: underline;
 }
 
 .content__card-link_current {
@@ -273,6 +266,7 @@ ol {
 
 .content__video-card-description-container {
   overflow-wrap: anywhere;
+  flex-grow: 1;
 }
 
 .content__video-card-title {
@@ -296,8 +290,9 @@ ol {
 }
 
 .content__video-card-thumbnail {
-  max-inline-size: 194px;
+  min-inline-size: 194px;
   max-block-size: 103px;
-  float: right;
+  object-fit: cover;
+  object-position: center;
 }
 
